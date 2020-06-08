@@ -38,6 +38,9 @@ namespace NetCoreAPI
                 options.Authority = "https://dev-uslrkkz5.au.auth0.com/";
                 options.Audience = "https://localhost:44318/";
             });
+
+            //Add XML formatter
+            services.AddControllers().AddXmlSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

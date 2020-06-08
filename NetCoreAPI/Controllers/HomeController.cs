@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreAPI.Models;
 
 namespace NetCoreAPI.Controllers
 {
@@ -20,6 +21,28 @@ namespace NetCoreAPI.Controllers
         {
             return Ok("Auth covered");
         }
-         
+
+
+        // GET: api/Home
+        [HttpGet]
+        [Route("[action]")]
+        public IActionResult Action2()
+        {
+            var productList = new List<Product>();
+            for (int i=0; i < 2; i++)
+            {
+                var product = new Product()
+                {
+                    ProductId = Guid.NewGuid(),
+                    ProductName = $"Product{i}",
+                    Description = $"Product Description {i}",
+                    Created = DateTime.Now.AddDays(-7)
+                };
+
+                productList.Add(product);
+            }
+            return Ok(productList);
+        }
+
     }
 }
